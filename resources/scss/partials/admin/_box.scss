@@ -1,0 +1,17 @@
+.box{
+    border: 2px solid rgba(0, 0, 0, 0.507);
+    background: rgb(200, 216, 221);
+    position: relative;
+    transform: translate(0);
+    transform-style: preserve-3d;
+}
+.my-shadow{
+    &::before{
+        content:"";
+        position: absolute;
+        inset: -5px;
+        transform: translate3d(10px,8px,-1px);
+        background: conic-gradient(from 90deg at 40% -25%, #3498db, #2ecc71, #e74c3c, #f39c12, #16a085, #8e44ad, #c0392b, #d35400, #27ae60, #2980b9, #f1c40f, #e67e22, #2c3e50, #e74c3c, #3498db, #3498db);
+        filter: blur(10px);
+    }
+  }

@@ -1,0 +1,12 @@
+header#admin-header{
+    background-color: #2D2F33;
+    height: 65px;
+    padding: 10px;
+
+    li{
+        border-radius: 20px;
+        &:hover{
+            background-color: white;
+        }
+    }
+}
