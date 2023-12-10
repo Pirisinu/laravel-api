@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/project-api', [ProjectController::class, 'index'])->name('prova-api');
+Route::get('/projects-api', [ProjectController::class, 'projects']);
