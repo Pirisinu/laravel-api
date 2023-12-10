@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Functions\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Technology;
@@ -39,6 +40,7 @@ class ProjectController extends Controller
     {
 
         $form_data = $request->all();
+        $form_data['slug'] = Helper::generateSlug($form_data['title'], Project::class);
         $messages = [
             'title.required' => 'The project name is required.',
             'title.min' => 'The project name cannot be under 5 characters.',
@@ -118,7 +120,11 @@ class ProjectController extends Controller
                 ->route('admin.project.index')
                 ->with('error', 'Project not found.');
         }
-
+        if ($project->title != $request->input('title')) {
+            $project->slug = Helper::generateSlug($request->input('title'), Project::class);
+        } else {
+            $project->slug;
+        }
         $project->update([
             'title' => $request->input('title'),
             'start_date' => $request->input('start_date'),
