@@ -22,5 +22,11 @@ class ProjectController extends Controller
         'technologies' => $technologies,
     ]);
     }
+    public function showBySlug($slug)
+    {
+        $project = Project::where('slug', $slug)->first();
+
+        return response()->json($project);
+    }
 
 }
