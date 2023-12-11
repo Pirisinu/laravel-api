@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>Generate your new project:</h1>
-<form action="{{route('admin.project.store')}}" method="POST" class="row g-3 p-3">
+<form action="{{route('admin.project.store')}}" method="POST" class="row g-3 p-3" enctype="multipart/form-data">
     @csrf
     {{-- NAME --}}
     <div class="col-md-4">
@@ -35,7 +35,7 @@
     </div>
 
     {{-- TECHNOLOGIES --}}
-    <div class="mb-3">
+    <div class="col-md-8 mb-3">
         <p>Technologies:</p>
         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
             @foreach ($technologies as $technology )
@@ -46,7 +46,6 @@
                   type="checkbox"
                   name="technologies[]"
                   value="{{ $technology->id }}"
-
                 >
                 <label class="btn btn-outline-primary" for="technology_{{ $technology->id }}">{{ $technology->name }}</label>
             @endforeach
@@ -56,6 +55,18 @@
         </div>
     </div>
 
+
+    <div class="col-md-4 mb-3">
+        <label for="image" class="form-label">Immagine</label>
+        <input
+            id="image"
+            class="form-control"
+            autocomplete="off"
+            type="file"
+            name="image"
+            value="{{ $technology->id }}"
+        >
+    </div>
     {{-- DESCRIPTION --}}
     <div class="mb-3">
         <label for="description" class="form-label">Description:</label>
